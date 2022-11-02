@@ -1,3 +1,5 @@
+git log
+
 commit 2da390dd49dd5ca33c514f832d62f1722bd24991
 Author: isabel <isabel.suorsa@helsinki.fi>
 Date:   Wed Nov 2 14:13:32 2022 +0200
