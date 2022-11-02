@@ -1,0 +1,112 @@
+commit 2da390dd49dd5ca33c514f832d62f1722bd24991
+Author: isabel <isabel.suorsa@helsinki.fi>
+Date:   Wed Nov 2 14:13:32 2022 +0200
+
+    harjoittelua
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 32614f9cfcb52275201b276809b9af42a2c9d157
+Author: isabel <isabel.suorsa@helsinki.fi>
+Date:   Wed Nov 2 14:10:06 2022 +0200
+
+    lisätty tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 2c0126ffff589ca6c36a35b09f6350ad841e6877
+Author: isabel <isabel.suorsa@helsinki.fi>
+Date:   Tue Nov 1 15:40:34 2022 +0200
+
+    muutokset tiedostoissa
+
+ eka.txt    | 4 ++--
+ kolmas.txt | 2 ++
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+commit 1bb3b239f64f10d8a55264dadca6a13e09102807
+Author: isabel <isabel.suorsa@helsinki.fi>
+Date:   Tue Nov 1 15:38:25 2022 +0200
+
+    tiedosto.txt uudelleennimeys
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 209f7920102317ec2f40475eadb2be2ed121ff9c
+Author: isabel <isabel.suorsa@helsinki.fi>
+Date:   Tue Nov 1 15:36:34 2022 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit ba4021a2bdc82859009c2e05cd05716a1646a569
+Author: isabel <isabel.suorsa@helsinki.fi>
+Date:   Tue Nov 1 15:32:45 2022 +0200
+
+    tiedosto.txt muutos
+
+ tiedosto.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 28e452b3b1cb4d25ddb0e7117812760361d59a89
+Author: isabel <isabel.suorsa@helsinki.fi>
+Date:   Tue Nov 1 15:31:20 2022 +0200
+
+    tekstin lisäys tiedostoon
+
+ tiedosto.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+commit 6bf48409b37f43db5f842719dcb86ff1f05a36e4
+Author: isabel <isabel.suorsa@helsinki.fi>
+Date:   Tue Nov 1 15:27:33 2022 +0200
+
+    stuff luotu
+
+ stuff/jokintiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 448a395869289682088bc49c4bb98d6134d97cf4
+Author: isabel <isabel.suorsa@helsinki.fi>
+Date:   Tue Nov 1 15:25:46 2022 +0200
+
+    muutokset tiedostoissa toinen.txt ja kolmas.txt
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit c0557a3947dee58c70e2667c1286ae1079a089ea
+Author: isabel <isabel.suorsa@helsinki.fi>
+Date:   Tue Nov 1 15:24:17 2022 +0200
+
+    kolmas.txt luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 660dd8ad856be169be372d31628dd7ee244525a8
+Author: isabel <isabel.suorsa@helsinki.fi>
+Date:   Tue Nov 1 15:21:45 2022 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit e194dc6597cf7acf46626847d32ec533736e305a
+Author: isabel <isabel.suorsa@helsinki.fi>
+Date:   Tue Nov 1 15:16:54 2022 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
