@@ -1,9 +1,9 @@
 from tkinter import ttk, constants
 
 class RegisterView:
-    def __init__(self, root, handle_login):
+    def __init__(self, root, handle_go_to_login):
         self._root = root
-        self._handle_login = handle_login
+        self._handle_login = handle_go_to_login
         self._frame = None
 
         self._initialize()
