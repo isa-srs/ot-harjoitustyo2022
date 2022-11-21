@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "ot-harjoitustyo2022"
+version = "0.1.0"
+description = ""
+authors = ["isabel <isabel.suorsa@helsinki.fi>"]
+readme = "README.md"
+packages = [{include = "ot_harjoitustyo2022"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+invoke = "^1.7.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
