@@ -1,8 +1,7 @@
-from tkinter import Tk
-from login_view import LoginView
-from register_view import RegisterView
-from frontpage_view import FrontPageView
-from add_course_view import AddCourseView
+from ui.login_view import LoginView
+from ui.register_view import RegisterView
+from ui.frontpage_view import FrontPageView
+from ui.add_course_view import AddCourseView
 
 class UI:
     def __init__(self, root):
@@ -59,11 +58,3 @@ class UI:
         )
 
         self._current_view.pack()
-
-window = Tk()
-window.title("Sovellus")
-
-ui = UI(window)
-ui.start()
-
-window.mainloop()
