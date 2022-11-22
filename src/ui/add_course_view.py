@@ -31,12 +31,12 @@ class AddCourseView:
             command=self._handle_show_frontpage_view    
         )
 
-        heading_label.grid(row=0, column=0, columnspan=2, sticky=constants.EW, padx=5, pady=5)
+        heading_label.grid(row=0, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
 
-        name_label.grid(padx=5, pady=5)
+        name_label.grid(sticky=constants.W, padx=5, pady=5)
         name_entry.grid(row=1, column=1, sticky=constants.EW, padx=5, pady=5)
 
-        credit_label.grid(padx=5, pady=5)
+        credit_label.grid(sticky=constants.W, padx=5, pady=5)
         credit_entry.grid(row=2, column=1, sticky=constants.EW, padx=5, pady=5)
 
         add_button.grid(columnspan=2, sticky=constants.EW, padx=5, pady=5)
