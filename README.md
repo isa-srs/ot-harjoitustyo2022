@@ -1,25 +1,50 @@
-# Ohjelmistotekniikka, syksy 2022
+# Opintojen seurantasovellus
 
-## Opintojen seurantasovellus
-
-Opiskelija voi kirjata sovellukseen käymiään kursseja ja seurata siten opintosuorituksiaan.
+Sovellus on tarkoitettu auttamaan opiskelijoita seuraamaan opintojen etenemistä ja kurssisuorituksia. Opiskelija voi lisätä sovellukseen hänen käymiään kursseja ja niistä saatuja tuloksia.
 
 ## Dokumentaatio
 
+- [Changelog](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/changelog.md)
 - [Työaikakirjanpito](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/tuntikirjanpito.md)
-- [Alustava vaatimusmäärittely](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/vaatimusmaarittely.md)
+- [Vaatimusmäärittely](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/vaatimusmaarittely.md)
 
-## Tehtävät
+## Asennus
 
-### Viikko 1
+1. Asenna sovelluksen riippuvuudet komennolla:
 
-[gitlog.txt](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/laskarit/viikko1/gitlog.txt)
+```bash
+poetry install
+```
 
-[komentorivi.txt](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/laskarit/viikko1/komentorivi.txt)
+2. Suorita vaadittavat alustustoimenpiteet komennolla:
 
-### Viikko 2
+```bash
+poetry run invoke build
+```
 
-[coveragereport.png](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/laskarit/viikko2/coveragereport.png)
+3. Käynnistä sovellus komennolla:
 
+```bash
+poetry run invoke start
+```
 
+## Komentorivikomennot
+
+### Ohjelman suorittaminen
+
+```bash
+poetry run invoke start
+```
+
+### Testaus
+
+```bash
+poetry run invoke test
+```
+
+### Testikattavuus
+
+```bash
+poetry run invoke coverage-report
+```
 
