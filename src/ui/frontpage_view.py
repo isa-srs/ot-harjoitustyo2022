@@ -1,4 +1,5 @@
 from tkinter import ttk, constants
+from services.service import service
 
 class FrontPageView:
     def __init__(self, root, handle_go_to_login, handle_add_course):
@@ -14,6 +15,10 @@ class FrontPageView:
 
     def destroy(self):
         self._frame.destroy()
+
+    def _logout(self):
+        service.logout()
+        self._logout()
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)

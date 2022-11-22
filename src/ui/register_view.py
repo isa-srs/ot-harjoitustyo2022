@@ -1,13 +1,15 @@
-from tkinter import ttk, constants
-from services.service import service
+from tkinter import ttk, constants, StringVar
+from services.service import service, UsernameExistsError
 
 class RegisterView:
     def __init__(self, root, handle_go_to_login):
         self._root = root
-        self._handle_login = handle_go_to_login
+        self._handle_go_to_login = handle_go_to_login
         self._frame = None
         self._username_entry = None
         self._password_entry = None
+        self._error_variable = None
+        self._error_label = None
 
         self._initialize()
 
@@ -23,8 +25,17 @@ class RegisterView:
 
         try:
             service.create_user(username, password)
-        except:
-            print("todo: error")
+            print("uusi käyttäjä luotu")
+            self._handle_go_to_login()
+        except UsernameExistsError:
+            self._show_error(f"Käyttäjänimi {username} on jo käytössä")
+    
+    def _show_error(self, message):
+        self._error_variable.set(message)
+        self._error_label.grid(columnspan=2, sticky=constants.W)
+    
+    def _hide_error(self):
+        self._error_label.grid_remove()
         
     def _initialize_username_field(self):
         username_label = ttk.Label(master=self._frame, text="Käyttäjänimi")
@@ -44,27 +55,39 @@ class RegisterView:
         self._frame = ttk.Frame(master=self._root)
     
         heading_label = ttk.Label(master=self._frame, text="Rekisteröidy")
-
-        self._initialize_username_field()
-        self._initialize_password_field()
-
+    
+        self._error_variable = StringVar(self._frame)
+        self._error_label = ttk.Label(
+            master=self._frame,
+            textvariable=self._error_variable,
+            foreground="red"
+        )
+    
         register_button = ttk.Button(
             master=self._frame,
             text="Luo käyttäjä",
-            command=self._create_user)
+            command=self._create_user
+        )
 
         login_label = ttk.Label(master=self._frame, text="Sinulla on jo tunnus?")
         login_button = ttk.Button(
             master=self._frame,
             text="Kirjaudu sisään",
-            command=self._handle_login
+            command=self._handle_go_to_login
         )
 
         heading_label.grid(row=0, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
 
+        self._initialize_username_field()
+        self._initialize_password_field()
+
+        self._error_label.grid(padx=5, pady=5)
+
         register_button.grid(columnspan=2, sticky=constants.EW, padx=5, pady=5)
 
-        login_label.grid(row=4, column=0, sticky=constants.EW)
+        login_label.grid(column=0, sticky=constants.EW)
         login_button.grid(columnspan=2, sticky=constants.EW, padx=5, pady=5)
 
         self._frame.grid_columnconfigure(1, weight=1, minsize=300)
+
+        self._hide_error()

@@ -25,7 +25,15 @@ class UserRepository:
             'select * from users where username = ?',
             (username,)
         )
-        row = cursor.fetchone()
-        return get_user_by_row(row)
+        result = cursor.fetchone()
+        return get_user_by_row(result)
+    
+    def find_all(self):
+        cursor = self._connection.cursor()
+        cursor.execute(
+            'select * from users'
+        )
+        result = cursor.fetchall()
+        return list(map(get_user_by_row, result))
     
 user_repository = UserRepository(get_database_connection())
