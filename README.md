@@ -6,7 +6,7 @@ Opiskelija voi kirjata sovellukseen käymiään kursseja ja seurata siten opinto
 
 ## Dokumentaatio
 
-- [Työaikakirjanpito.md](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/tuntikirjanpito.md)
+- [Työaikakirjanpito](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/tuntikirjanpito.md)
 - [Alustava vaatimusmäärittely](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/vaatimusmaarittely.md)
 
 ## Tehtävät
