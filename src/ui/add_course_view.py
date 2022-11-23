@@ -1,10 +1,13 @@
 from tkinter import ttk, constants
+from services.service import service
 
 class AddCourseView:
     def __init__(self, root, handle_show_frontpage_view):
         self._root = root
         self._handle_show_frontpage_view = handle_show_frontpage_view
         self._frame = None
+        self._name_entry = None
+        self._credits_entry = None
 
         self._initialize()
 
@@ -13,6 +16,17 @@ class AddCourseView:
 
     def destroy(self):
         self._frame.destroy()
+    
+    def _add_course(self):
+        name = self._name_entry.get()
+        credits = self._credits_entry.get()
+
+        try:
+            service.add_course(name, credits)
+            print("uusi kurssi lisätty")
+            self._handle_show_frontpage_view()
+        except:
+            print("kurssin lisääminen epäonnistui")
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
