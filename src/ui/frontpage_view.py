@@ -7,6 +7,7 @@ class FrontPageView:
         self._handle_to_go_login = handle_go_to_login
         self._handle_add_course = handle_add_course
         self._frame = None
+        self._user = service.get_current_user()
 
         self._initialize()
 
@@ -25,6 +26,11 @@ class FrontPageView:
 
         heading_label = ttk.Label(master=self._frame, text="Etusivu")
 
+        user_label = ttk.Label(
+            master=self._frame,
+            text=f"Moi, {self._user.username}!"
+        )
+
         add_course_button = ttk.Button(
             master=self._frame,
             text="Lisää uusi kurssi",
@@ -38,7 +44,8 @@ class FrontPageView:
         )
 
         heading_label.grid(row=0, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
-        add_course_button.grid(row=1, column=0, sticky=constants.W, padx=5, pady=5)
-        logout_button.grid(row=1, column=1, sticky=constants.W, padx=5, pady=5)
+        user_label.grid(columnspan=2, sticky=constants.W, padx=5, pady=5)
+        add_course_button.grid(row=2, column=0, sticky=constants.W, padx=5, pady=5)
+        logout_button.grid(row=2, column=1, sticky=constants.W, padx=5, pady=5)
 
         self._frame.grid_columnconfigure(1, weight=1, minsize=300)

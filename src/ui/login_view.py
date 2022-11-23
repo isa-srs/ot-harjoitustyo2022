@@ -27,6 +27,7 @@ class LoginView:
 
         try:
             service.login(username, password)
+            print("sisäänkirjautuminen onnistui")
             self._handle_login()
         except InvalidCredentialsError:
             self._show_error("Käyttäjänimi tai salasana ei täsmää")
@@ -67,7 +68,7 @@ class LoginView:
         login_button = ttk.Button(
             master=self._frame,
             text="Kirjaudu",
-            command=self._handle_login
+            command=self._login
         )
 
         register_label = ttk.Label(master=self._frame, text="Ei tunnusta?")

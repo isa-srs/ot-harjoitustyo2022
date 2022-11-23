@@ -43,5 +43,8 @@ class AppService:
     
     def get_all_users(self):
         return self._user_repository.find_all()
+    
+    def get_current_user(self):
+        return self._user
 
 service = AppService()
