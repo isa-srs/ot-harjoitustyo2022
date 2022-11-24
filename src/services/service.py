@@ -57,5 +57,8 @@ class AppService:
         course = self._course_repository.add_course(Course(name, credits))
 
         return course
+    
+    def get_all_courses(self):
+        return self._course_repository.find_all()
 
 service = AppService()

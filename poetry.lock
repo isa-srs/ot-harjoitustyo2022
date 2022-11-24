@@ -8,8 +8,8 @@ python-versions = "*"
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.8"
-content-hash = "bb9a6eea321e176329e8151549b2027b38112833d610bbfdec2eeabe0f78b1f9"
+python-versions = "3.8.10"
+content-hash = "c7c73112f51e4e6ef9bd41d3d166665859c5b8fbf2c68458b04476b17995d2bd"
 
 [metadata.files]
 invoke = [
