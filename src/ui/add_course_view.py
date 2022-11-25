@@ -1,6 +1,7 @@
 from tkinter import ttk, constants
 from services.service import service
 
+
 class AddCourseView:
     def __init__(self, root, handle_show_frontpage_view):
         self._root = root
@@ -16,7 +17,7 @@ class AddCourseView:
 
     def destroy(self):
         self._frame.destroy()
-    
+
     def _add_course(self):
         name = self._name_entry.get()
         credits = self._credits_entry.get()
@@ -36,16 +37,18 @@ class AddCourseView:
         name_label = ttk.Label(master=self._frame, text="Kurssin nimi:")
         name_entry = ttk.Entry(master=self._frame)
 
-        credit_label = ttk.Label(master=self._frame, text="Opintopisteiden määrä:")
+        credit_label = ttk.Label(
+            master=self._frame, text="Opintopisteiden määrä:")
         credit_entry = ttk.Entry(master=self._frame)
 
         add_button = ttk.Button(
             master=self._frame,
             text="Lisää kurssi",
-            command=self._handle_show_frontpage_view    
+            command=self._handle_show_frontpage_view
         )
 
-        heading_label.grid(row=0, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
+        heading_label.grid(row=0, column=0, columnspan=2,
+                           sticky=constants.W, padx=5, pady=5)
 
         name_label.grid(sticky=constants.W, padx=5, pady=5)
         name_entry.grid(row=1, column=1, sticky=constants.EW, padx=5, pady=5)

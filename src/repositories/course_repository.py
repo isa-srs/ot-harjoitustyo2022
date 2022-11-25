@@ -18,7 +18,7 @@ class CourseRepository:
         )
         self._connection.commit()
         return course
-    
+
     def find_all(self):
         cursor = self._connection.cursor()
         cursor.execute(
@@ -26,5 +26,6 @@ class CourseRepository:
         )
         result = cursor.fetchall()
         return list(map(get_course_by_row, result))
-    
+
+
 course_repository = CourseRepository(get_database_connection())

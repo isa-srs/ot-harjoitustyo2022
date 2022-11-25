@@ -1,6 +1,40 @@
 from tkinter import ttk, constants
 from services.service import service
 
+
+class CourseListView:
+    def __init__(self, root, courses):
+        self._root = root
+        self._courses = courses
+        self._frame = None
+
+        self._initialize()
+    
+    def pack(self):
+        self._frame.pack(fill=constants.X)
+    
+    def destroy(self):
+        self._frame.destroy()
+    
+    def _initialize_course_item(self, course):
+        item_frame = ttk.Frame(master=self._frame)
+
+        name_label = ttk.Label(master=item_frame, text=course.name)
+        credits_label = ttk.Label(master=item_frame, text=course.credits)
+
+        name_label.grid(sticky=constants.W, padx=5, pady=5)
+        credits_label.grid(sticky=constants.W, padx=5, pady=5)
+
+        item_frame.grid_columnconfigure(0, weight=1)
+        item_frame.pack(fill=constants.X)
+    
+    def _initialize(self):
+        self._frame = ttk.Frame(master=self._root)
+
+        for course in self._courses:
+            self._initialize_course_item(course)
+
+
 class FrontPageView:
     def __init__(self, root, handle_go_to_login, handle_add_course):
         self._root = root
@@ -8,6 +42,8 @@ class FrontPageView:
         self._handle_add_course = handle_add_course
         self._frame = None
         self._user = service.get_current_user()
+        self._course_list_view = None
+        self._course_list_frame = None
 
         self._initialize()
 
@@ -19,10 +55,24 @@ class FrontPageView:
 
     def _logout(self):
         service.logout()
-        self._logout()
+        self._handle_to_go_login()
+
+    def _initialize_course_list(self):
+        if self._course_list_view:
+            self._course_list_view.destroy()
+        
+        courses = service.get_all_courses()
+
+        self._course_list_view = CourseListView(
+            self._course_list_frame,
+            courses
+        )
+
+        self._course_list_view.pack()
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
+        self._course_list_frame = ttk.Frame(master=self._frame)
 
         heading_label = ttk.Label(master=self._frame, text="Etusivu")
 
@@ -40,12 +90,19 @@ class FrontPageView:
         logout_button = ttk.Button(
             master=self._frame,
             text="Kirjaudu ulos",
-            command=self._handle_to_go_login
+            command=self._logout
         )
 
-        heading_label.grid(row=0, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
+        heading_label.grid(row=0, column=0, columnspan=2,
+                           sticky=constants.W, padx=5, pady=5)
         user_label.grid(columnspan=2, sticky=constants.W, padx=5, pady=5)
-        add_course_button.grid(row=2, column=0, sticky=constants.W, padx=5, pady=5)
+        add_course_button.grid(
+            row=2, column=0, sticky=constants.W, padx=5, pady=5)
         logout_button.grid(row=2, column=1, sticky=constants.W, padx=5, pady=5)
 
-        self._frame.grid_columnconfigure(1, weight=1, minsize=300)
+        self._initialize_course_list()
+
+        self._course_list_frame.grid(columnspan=2, sticky=constants.EW)
+
+        self._frame.grid_columnconfigure(0, weight=1, minsize=300)
+        self._frame.grid_columnconfigure(1, weight=1)

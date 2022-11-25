@@ -20,7 +20,7 @@ class LoginView:
 
     def destroy(self):
         self._frame.destroy()
-    
+
     def _login(self):
         username = self._username_entry.get()
         password = self._password_entry.get()
@@ -35,7 +35,7 @@ class LoginView:
     def _show_error(self, message):
         self._error_variable.set(message)
         self._error_label.grid(columnspan=2, sticky=constants.W)
-    
+
     def _hide_error(self):
         self._error_label.grid_remove()
 
@@ -44,14 +44,16 @@ class LoginView:
         self._username_entry = ttk.Entry(master=self._frame)
 
         username_label.grid(sticky=constants.W, padx=5, pady=5)
-        self._username_entry.grid(row=1, column=1, sticky=constants.EW, padx=5, pady=5)
+        self._username_entry.grid(
+            row=1, column=1, sticky=constants.EW, padx=5, pady=5)
 
     def _initialize_password_field(self):
         password_label = ttk.Label(master=self._frame, text="Salasana")
         self._password_entry = ttk.Entry(master=self._frame)
 
         password_label.grid(sticky=constants.W, padx=5, pady=5)
-        self._password_entry.grid(row=2, column=1, sticky=constants.EW, padx=5, pady=5)
+        self._password_entry.grid(
+            row=2, column=1, sticky=constants.EW, padx=5, pady=5)
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
@@ -78,7 +80,8 @@ class LoginView:
             command=self._handle_show_register_view
         )
 
-        heading_label.grid(row=0, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
+        heading_label.grid(row=0, column=0, columnspan=2,
+                           sticky=constants.W, padx=5, pady=5)
 
         self._initialize_username_field()
         self._initialize_password_field()

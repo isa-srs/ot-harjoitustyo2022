@@ -11,9 +11,9 @@ class FakeUserRepository:
 class TestAppService(unittest.TestCase):
     def setUp(self):
         self.service = AppService(FakeUserRepository())
-        
+
         self.user_isabel = User("isabel", "123456")
-    
+
     def login_user(self, user):
         self.service.create_user(user.username, user.password)
 
@@ -34,4 +34,5 @@ class TestAppService(unittest.TestCase):
 
         self.service.create_user(username, password)
 
-        self.assertRaises(UsernameExistsError, self.service.create_user(username, "123"))
+        self.assertRaises(UsernameExistsError,
+                          self.service.create_user(username, "123"))
