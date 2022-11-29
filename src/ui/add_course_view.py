@@ -29,33 +29,42 @@ class AddCourseView:
         except:
             print("kurssin lisääminen epäonnistui")
 
+    def _initialize_course_name_field(self):
+        name_label = ttk.Label(master=self._frame, text="Kurssin nimi:")
+        self._name_entry = ttk.Entry(master=self._frame)
+
+        name_label.grid(sticky=constants.W, padx=5, pady=5)
+        self._name_entry.grid(row=1, column=1, sticky=constants.EW, padx=5, pady=5)
+    
+    def _initialize_credits_field(self):
+        credits_label = ttk.Label(
+            master=self._frame, text="Opintopisteiden määrä:")
+        self._credits_entry = ttk.Entry(master=self._frame)
+
+        credits_label.grid(sticky=constants.W, padx=5, pady=5)
+        self._credits_entry.grid(row=2, column=1, sticky=constants.EW, padx=5, pady=5)
+
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
 
         heading_label = ttk.Label(master=self._frame, text="Lisää kurssi")
-
-        name_label = ttk.Label(master=self._frame, text="Kurssin nimi:")
-        name_entry = ttk.Entry(master=self._frame)
-
-        credit_label = ttk.Label(
-            master=self._frame, text="Opintopisteiden määrä:")
-        credit_entry = ttk.Entry(master=self._frame)
-
         add_button = ttk.Button(
             master=self._frame,
             text="Lisää kurssi",
+            command=self._add_course
+        )
+        return_button = ttk.Button(
+            master=self._frame,
+            text="Palaa etusivulle",
             command=self._handle_show_frontpage_view
         )
 
-        heading_label.grid(row=0, column=0, columnspan=2,
-                           sticky=constants.W, padx=5, pady=5)
-
-        name_label.grid(sticky=constants.W, padx=5, pady=5)
-        name_entry.grid(row=1, column=1, sticky=constants.EW, padx=5, pady=5)
-
-        credit_label.grid(sticky=constants.W, padx=5, pady=5)
-        credit_entry.grid(row=2, column=1, sticky=constants.EW, padx=5, pady=5)
+        heading_label.grid(row=0, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
+        
+        self._initialize_course_name_field()
+        self._initialize_credits_field()
 
         add_button.grid(columnspan=2, sticky=constants.EW, padx=5, pady=5)
+        return_button.grid(columnspan=2, sticky=constants.EW, padx=5, pady=5)
 
         self._frame.grid_columnconfigure(1, weight=1, minsize=300)

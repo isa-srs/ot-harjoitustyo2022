@@ -98,11 +98,11 @@ class FrontPageView:
         user_label.grid(columnspan=2, sticky=constants.W, padx=5, pady=5)
         add_course_button.grid(
             row=2, column=0, sticky=constants.W, padx=5, pady=5)
-        logout_button.grid(row=2, column=1, sticky=constants.W, padx=5, pady=5)
+        logout_button.grid(row=3, column=0, sticky=constants.W, padx=5, pady=5)
 
-        self._initialize_course_list()
+        #self._initialize_course_list()
 
-        self._course_list_frame.grid(columnspan=2, sticky=constants.EW)
+        #self._course_list_frame.grid(columnspan=2, sticky=constants.EW)
 
         self._frame.grid_columnconfigure(0, weight=1, minsize=300)
         self._frame.grid_columnconfigure(1, weight=1)

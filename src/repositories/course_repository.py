@@ -13,11 +13,19 @@ class CourseRepository:
     def add_course(self, course):
         cursor = self._connection.cursor()
         cursor.execute(
-            'insert into courses (name, credits) calues (?,?)',
+            'insert into courses (name, credits) values (?,?)',
             (course.name, course.credits)
         )
         self._connection.commit()
         return course
+
+    # def find_courses_by_user(self, user):
+    #     cursor = self._connection.cursor()
+    #     cursor.execute(
+    #         'select * from courses where user=?', (user,)
+    #     )
+    #     courses = cursor.fetchall()
+    #     return list(map(get_course_by_row, courses))
 
     def find_all(self):
         cursor = self._connection.cursor()
@@ -27,5 +35,9 @@ class CourseRepository:
         result = cursor.fetchall()
         return list(map(get_course_by_row, result))
 
+    def delete_all(self):
+        cursor = self._connection.cursor()
+        cursor.execute('delete from courses')
+        self._connection.commit()
 
 course_repository = CourseRepository(get_database_connection())

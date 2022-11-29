@@ -6,8 +6,8 @@ def main():
     window = Tk()
     window.title("Sovellus")
 
-    ui = UI(window)
-    ui.start()
+    ui_view = UI(window)
+    ui_view.start()
 
     window.mainloop()
 

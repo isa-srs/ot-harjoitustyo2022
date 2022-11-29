@@ -6,15 +6,24 @@ def drop_tables(connection):
     cursor.execute("""
         drop table if exists users;
     """)
+    cursor.execute("""
+        drop table if exists courses;
+    """)
     connection.commit()
 
 
 def create_tables(connection):
     cursor = connection.cursor()
     cursor.execute("""
-            create table users (
+        create table users (
             username text primary key,
             password text
+        );
+    """)
+    cursor.execute("""
+        create table courses (
+            name text primary key,
+            credits text
         );
     """)
     connection.commit()

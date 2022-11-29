@@ -18,7 +18,9 @@ class UsernameExistsError(Exception):
 
 
 class AppService:
-    def __init__(self, user_repository=default_user_repository, course_repository=default_course_repository):
+    def __init__(self,
+        user_repository=default_user_repository,
+        course_repository=default_course_repository):
         self._user = None
         self._user_repository = user_repository
         self._course_repository = course_repository
@@ -56,8 +58,8 @@ class AppService:
 
     def add_course(self, name, credits):
         # todo: tarkista jos kurssi olemassa
+        # todo: lisää kurssi käyttäjän mukaan
         course = self._course_repository.add_course(Course(name, credits))
-
         return course
 
     def get_all_courses(self):
