@@ -4,6 +4,7 @@ Sovellus on tarkoitettu auttamaan opiskelijoita seuraamaan opintojen etenemistä
 
 ## Dokumentaatio
 
+- [Arkkitehtuuri](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/arkkitehtuuri.md)
 - [Changelog](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/changelog.md)
 - [Työaikakirjanpito](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/tuntikirjanpito.md)
 - [Vaatimusmäärittely](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/vaatimusmaarittely.md)
@@ -46,5 +47,11 @@ poetry run invoke test
 
 ```bash
 poetry run invoke coverage-report
+```
+
+### Pylint
+
+```bash
+poetry run invoke lint
 ```
 
