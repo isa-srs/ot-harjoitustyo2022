@@ -8,4 +8,10 @@
 - Lisätty testit, että uuden käyttäjän luominen toimii oikein
   - Huom! Pytestin ja coverage-riippuvuuksien asentamisessa ongelmia, joten ne eivät toimi. Testit kuitenkin olemassa tiedostossa src/tests/service_test.py
 
+## Viikko 4
+
+- Lisätty CourseRepository-luokka, joka vastaa kurssien lisäämisestä ja tallentamisesta tietokantaan
+- Kirjautunut käyttäjä pystyy lisäämään uusia kursseja
+- Lisätty testit, että UserRepository- ja CourseRepository-luokat tallentavat uudet käyttäjät/kurssit oikein ja ne ovat löydettävissä tietokannasta
+  - Riippuvuusten asennuksessa aikaisemmin ilmennyt ongelma korjattu; testit ja testikattavuusraportin luominen toimivat
 

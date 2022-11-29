@@ -12,18 +12,19 @@ Alustavasti ainoa käyttäjärooli on opiskelija eli peruskäyttäjä. Myöhemmi
 
 ### Ennen kirjautumista
 
-- opiskelija voi rekisteröityä uutena käyttäjänä
-- opiskelija voi kirjautua sisään
+- TEHTY Opiskelija voi rekisteröityä uutena käyttäjänä
+- TEHTY Opiskelija voi kirjautua sisään
 
 ### Kirjautumisen jälkeen
 
-- opiskelija voi lisätä uusia kursseja
-- kurssille annetaan tiedoiksi sen nimi ja siitä saatavat opintopisteet
-- kurssin voi jälkeenpäin merkitä suoritetuksi ja kirjata siitä saatu arvosana (1-5 tai hyväksytty/ei arvosanaa)
-- opiskelija näkee kesken olevat kurssit, suoritetut kurssit, kaikista kursseista saatujen opintopisteiden määrän ja arvosanojen keskiarvon
+- TEHTY Opiskelija voi kirjautua ulos
+- TEHTY Opiskelija voi lisätä uusia kursseja (tallentuvat tietokantaan, mutta eivät vielä näy etusivulla)
+- THETY Kurssille annetaan tiedoiksi sen nimi ja siitä saatavat opintopisteet
+- Kurssin voi jälkeenpäin merkitä suoritetuksi ja kirjata siitä saatu arvosana (1-5 tai hyväksytty/ei arvosanaa)
+- Opiskelija näkee kesken olevat kurssit, suoritetut kurssit, kaikista kursseista saatujen opintopisteiden määrän ja arvosanojen keskiarvon
 
 ## Jatkokehitysideat
 
-- kursseihin voi lisätä niiden suoritusajankohdan (esim. periodeittain tai päivämäärien perusteella), jolloin kursseja voi myös selata tämän ominaisuuden avulla
-- bonus-ominaisuus: etusivulla näkyy käyttäjälle satunnaisia tsemppaavia viestejä kannustamaan opintojen kanssa :-)
+- Kursseihin voi lisätä niiden suoritusajankohdan (esim. periodeittain tai päivämäärien perusteella), jolloin kursseja voi myös selata tämän ominaisuuden avulla
+- Bonus-ominaisuus: etusivulla näkyy käyttäjälle satunnaisia tsemppaavia viestejä kannustamaan opintojen kanssa :-)
 

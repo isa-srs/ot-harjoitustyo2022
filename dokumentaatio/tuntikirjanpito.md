@@ -8,5 +8,7 @@
 | 19.11. | 0.5 | lisätty etusivu-näkymä |
 | 21.11. | 3   | rekisteröimisen ja kirjautumisen toteutusta, tallentaminen tietokantaan |
 | 22.11. | 2   | rekisteröityminen kuntoon, lisätty virheilmoituksia, lisätty invoke-tehtävät |
-| yht.  | 9.5 | |
+| 25.11. | 1.5 | kurssien lisääminen tietokantaan ja etusivulle |
+| yht.  | 11  | |
+
 
