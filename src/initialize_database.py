@@ -23,7 +23,8 @@ def create_tables(connection):
     cursor.execute("""
         create table courses (
             name text primary key,
-            credits text
+            credits text,
+            user text
         );
     """)
     connection.commit()

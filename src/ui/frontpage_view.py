@@ -19,11 +19,9 @@ class CourseListView:
     def _initialize_course_item(self, course):
         item_frame = ttk.Frame(master=self._frame)
 
-        name_label = ttk.Label(master=item_frame, text=course.name)
-        credits_label = ttk.Label(master=item_frame, text=course.credits)
+        label = ttk.Label(master=item_frame, text=f"{course.name} ({course.credits} op)")
 
-        name_label.grid(sticky=constants.W, padx=5, pady=5)
-        credits_label.grid(sticky=constants.W, padx=5, pady=5)
+        label.grid(sticky=constants.W, padx=5, pady=5)
 
         item_frame.grid_columnconfigure(0, weight=1)
         item_frame.pack(fill=constants.X)
@@ -61,7 +59,7 @@ class FrontPageView:
         if self._course_list_view:
             self._course_list_view.destroy()
         
-        courses = service.get_all_courses()
+        courses = service.get_courses_by_user()
 
         self._course_list_view = CourseListView(
             self._course_list_frame,
@@ -93,16 +91,14 @@ class FrontPageView:
             command=self._logout
         )
 
-        heading_label.grid(row=0, column=0, columnspan=2,
-                           sticky=constants.W, padx=5, pady=5)
+        heading_label.grid(columnspan=2, sticky=constants.W, padx=5, pady=5)
         user_label.grid(columnspan=2, sticky=constants.W, padx=5, pady=5)
-        add_course_button.grid(
-            row=2, column=0, sticky=constants.W, padx=5, pady=5)
-        logout_button.grid(row=3, column=0, sticky=constants.W, padx=5, pady=5)
+        
+        self._initialize_course_list()
+        self._course_list_frame.grid(columnspan=2, sticky=constants.EW)
 
-        #self._initialize_course_list()
-
-        #self._course_list_frame.grid(columnspan=2, sticky=constants.EW)
+        add_course_button.grid(sticky=constants.W, padx=5, pady=5)
+        logout_button.grid(sticky=constants.W, padx=5, pady=5)
 
         self._frame.grid_columnconfigure(0, weight=1, minsize=300)
         self._frame.grid_columnconfigure(1, weight=1)

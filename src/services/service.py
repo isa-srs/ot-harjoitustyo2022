@@ -58,12 +58,15 @@ class AppService:
 
     def add_course(self, name, credits):
         # todo: tarkista jos kurssi olemassa
-        # todo: lisää kurssi käyttäjän mukaan
-        course = self._course_repository.add_course(Course(name, credits))
+
+        course = self._course_repository.add_course(Course(name, credits, self._user.username))
         return course
 
     def get_all_courses(self):
         return self._course_repository.find_all()
+
+    def get_courses_by_user(self):
+        return self._course_repository.find_courses_by_user(self._user.username)
 
 
 service = AppService()

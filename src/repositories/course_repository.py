@@ -3,7 +3,7 @@ from database_connection import get_database_connection
 
 
 def get_course_by_row(row):
-    return Course(row["name"], row["credits"]) if row else None
+    return Course(row["name"], row["credits"], row["user"]) if row else None
 
 
 class CourseRepository:
@@ -13,19 +13,19 @@ class CourseRepository:
     def add_course(self, course):
         cursor = self._connection.cursor()
         cursor.execute(
-            'insert into courses (name, credits) values (?,?)',
-            (course.name, course.credits)
+            'insert into courses (name, credits, user) values (?,?,?)',
+            (course.name, course.credits, course.user)
         )
         self._connection.commit()
         return course
 
-    # def find_courses_by_user(self, user):
-    #     cursor = self._connection.cursor()
-    #     cursor.execute(
-    #         'select * from courses where user=?', (user,)
-    #     )
-    #     courses = cursor.fetchall()
-    #     return list(map(get_course_by_row, courses))
+    def find_courses_by_user(self, user):
+        cursor = self._connection.cursor()
+        cursor.execute(
+            'select * from courses where user=?', (user,)
+        )
+        courses = cursor.fetchall()
+        return list(map(get_course_by_row, courses))
 
     def find_all(self):
         cursor = self._connection.cursor()
