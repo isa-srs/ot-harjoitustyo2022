@@ -49,6 +49,16 @@ poetry run invoke test
 poetry run invoke coverage-report
 ```
 
+Huom! Komento ei välttämättä toimi tällä hetkellä kuten pitää. Silloin suorita komennot:
+
+```bash
+poetry shell
+```
+
+```bash
+coverage html
+```
+
 ### Pylint
 
 ```bash
