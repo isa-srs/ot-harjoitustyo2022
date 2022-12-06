@@ -19,9 +19,11 @@ Alustavasti ainoa käyttäjärooli on opiskelija eli peruskäyttäjä. Myöhemmi
 
 - TEHTY Opiskelija voi kirjautua ulos
 - TEHTY Opiskelija voi lisätä uusia kursseja (tallentuvat tietokantaan, mutta eivät vielä näy etusivulla)
-- THETY Kurssille annetaan tiedoiksi sen nimi ja siitä saatavat opintopisteet
+- TEHTY Kurssille annetaan tiedoiksi sen nimi ja siitä saatavat opintopisteet
 - Kurssin voi jälkeenpäin merkitä suoritetuksi ja kirjata siitä saatu arvosana (1-5 tai hyväksytty/ei arvosanaa)
-- Opiskelija näkee kesken olevat kurssit, suoritetut kurssit, kaikista kursseista saatujen opintopisteiden määrän ja arvosanojen keskiarvon
+- TEHTY Opiskelija näkee kaikki lisäämänsä kurssit etusivulla
+- Kurssit on lajiteltu kesken oleviin ja suoritettuihin
+- Opiskelija näkee suoritettujen kurssien opintopisteiden kokonaismäärän ja arvosanojen keskiarvon
 
 ## Jatkokehitysideat
 

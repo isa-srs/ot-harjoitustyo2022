@@ -11,6 +11,7 @@
 | 25.11. | 1.5 | kurssien lisääminen tietokantaan |
 | 28.11. | 2   | kurssien lisäämisen tietokantaan korjausta |
 | 29.11. | 3   | tietokanta ja kurssien lisääminen kuntoon, testejä, lisätty pylint |
-| yht.  | 16  | |
+| 6.11.  | 2   | kurssit näkyvät etusivulla |
+| yht.  | 18  | |
 
 

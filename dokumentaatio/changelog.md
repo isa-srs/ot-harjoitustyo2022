@@ -15,3 +15,6 @@
 - Lisätty testit, että UserRepository- ja CourseRepository-luokat tallentavat uudet käyttäjät/kurssit oikein ja ne ovat löydettävissä tietokannasta
   - Riippuvuusten asennuksessa aikaisemmin ilmennyt ongelma korjattu; testit ja testikattavuusraportin luominen toimivat
 
+## Viikko 5
+
+- Opiskelija näkee omat kurssinsa etusivulla
