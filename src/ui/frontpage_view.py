@@ -40,6 +40,7 @@ class FrontPageView:
         self._handle_add_course = handle_add_course
         self._frame = None
         self._user = service.get_current_user()
+        self._all_credits = service.all_credits()
         self._course_list_view = None
         self._course_list_frame = None
 
@@ -79,6 +80,11 @@ class FrontPageView:
             text=f"Moi, {self._user.username}!"
         )
 
+        credits_label = ttk.Label(
+            master=self._frame,
+            text=f"Opintopisteitä yhteensä {self._all_credits}"
+        )
+
         add_course_button = ttk.Button(
             master=self._frame,
             text="Lisää uusi kurssi",
@@ -93,6 +99,7 @@ class FrontPageView:
 
         heading_label.grid(columnspan=2, sticky=constants.W, padx=5, pady=5)
         user_label.grid(columnspan=2, sticky=constants.W, padx=5, pady=5)
+        credits_label.grid(columnspan=2, sticky=constants.W, padx=5, pady=5)
         
         self._initialize_course_list()
         self._course_list_frame.grid(columnspan=2, sticky=constants.EW)

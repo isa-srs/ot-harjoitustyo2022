@@ -153,5 +153,13 @@ class AppService:
 
         return self._course_repository.find_courses_by_user(self._user.username)
 
+    def all_credits(self):
+        courses = self.get_courses_by_user()
+        credits = 0
+        for course in courses:
+            credits += int(course.credits)
+
+        return credits
+
 
 service = AppService()
