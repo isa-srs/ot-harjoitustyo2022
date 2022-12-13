@@ -18,3 +18,8 @@
 ## Viikko 5
 
 - Opiskelija näkee omat kurssinsa etusivulla
+
+## Viikko 6
+
+- Opiskelija näkee etusivulla kurssien opintopisteiden kokonaismäärän
+

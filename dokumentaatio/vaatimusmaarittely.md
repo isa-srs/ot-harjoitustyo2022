@@ -23,7 +23,8 @@ Alustavasti ainoa käyttäjärooli on opiskelija eli peruskäyttäjä. Myöhemmi
 - Kurssin voi jälkeenpäin merkitä suoritetuksi ja kirjata siitä saatu arvosana (1-5 tai hyväksytty/ei arvosanaa)
 - TEHTY Opiskelija näkee kaikki lisäämänsä kurssit etusivulla
 - Kurssit on lajiteltu kesken oleviin ja suoritettuihin
-- Opiskelija näkee suoritettujen kurssien opintopisteiden kokonaismäärän ja arvosanojen keskiarvon
+- OSITTAIN TEHTY Opiskelija näkee suoritettujen kurssien opintopisteiden kokonaismäärän
+- Opiskelija näkee saatujen arvosanojen keskiarvon
 
 ## Jatkokehitysideat
 

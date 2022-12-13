@@ -12,6 +12,8 @@
 | 28.11. | 2   | kurssien lisäämisen tietokantaan korjausta |
 | 29.11. | 3   | tietokanta ja kurssien lisääminen kuntoon, testejä, lisätty pylint |
 | 6.11.  | 2   | kurssit näkyvät etusivulla |
-| yht.  | 18  | |
+| 13.12. | 1   | docstring |
+| | 1   | koodin siistimistä ja lisätty opintopisteiden kokonaismäärä |
+| yht.  | 20  | |
 
 
