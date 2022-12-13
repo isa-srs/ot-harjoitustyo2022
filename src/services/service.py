@@ -10,22 +10,57 @@ from repositories.course_repository import (
 
 
 class InvalidCredentialsError(Exception):
-    pass
+    """Luokka, joka nostaa virheen, kun annettu käyttäjä tai salasana on väärin.
+
+    Args:
+        Exception
+    """
 
 
 class UsernameExistsError(Exception):
-    pass
+    """Luokka, joka nostaa virheen, kun yritetään rekisteröityä varatulla käyttäjänimellä.
+
+    Args:
+        Exception
+    """
 
 
 class AppService:
+    """Luokka, joka vastaa sovelluslogiikasta.
+    """
+
     def __init__(self,
         user_repository=default_user_repository,
         course_repository=default_course_repository):
+        """Luokan konstruktori, alustaa uuden palvelun.
+
+        Args:
+            user_repository:
+                Vapaaehtoinen, oletusarvoltaan UserRepository-olio.
+                Olio, jolla on UserRepository-luokkaa vastaavat metodit.
+            course_repository:
+                Vapaaehtoinen, oletusarvoltaan CourseRepository-olio.
+                Olio, jolla on CourseRepository-luokkaa vastaavat metodit.
+        """
+
         self._user = None
         self._user_repository = user_repository
         self._course_repository = course_repository
 
     def create_user(self, username, password):
+        """Luo uuden käyttäjän.
+
+        Args:
+            username (str): Käyttäjänimi
+            password (str): Salasana
+
+        Raises:
+            UsernameExistsError: Virhe, joka tulee, jos annettu käyttäjänimi on jo käytössä.
+
+        Returns:
+            User: Luotu käyttäjä User-oliona.
+        """
+
         existing_user = self._user_repository.find_by_username(username)
 
         if existing_user:
@@ -37,6 +72,19 @@ class AppService:
         return user
 
     def login(self, username, password):
+        """Kirjaa käyttäjän sisään.
+
+        Args:
+            username (str): Käyttäjänimi
+            password (str): Salasana
+
+        Raises:
+            InvalidCredentialsError: Virhe, joka tulee, jos käyttäjänimi tai salasana ei täsmää.
+
+        Returns:
+            User: Kirjautunut käyttäjä User-oliona.
+        """
+
         user = self._user_repository.find_by_username(username)
 
         if not user or user.password != password:
@@ -48,24 +96,61 @@ class AppService:
         return user
 
     def logout(self):
+        """Kirjaa käyttäjän ulos.
+        """
+
         self._user = None
 
     def get_all_users(self):
+        """Hakee tietokannasta kaikki käyttäjät.
+
+        Returns:
+            List: Lista kaikista olemassa olevista käyttäjistä.
+        """
+
         return self._user_repository.find_all()
 
     def get_current_user(self):
+        """Hakee tietokannasta sillä hetkellä kirjautuneen käyttäjän.
+
+        Returns:
+            User: Kirjautunut käyttäjä User-oliona.
+        """
+
         return self._user
 
     def add_course(self, name, credits):
+        """Lisää uuden kurssin tietokantaan.
+
+        Args:
+            name (str): Kurssin nimi
+            credits (str): Kurssin opintopisteet
+
+        Returns:
+            Course: Lisätty kurssi Course-oliona.
+        """
+
         # todo: tarkista jos kurssi olemassa
 
         course = self._course_repository.add_course(Course(name, credits, self._user.username))
         return course
 
     def get_all_courses(self):
+        """Hakee tietokannasta kaikki kurssit.
+
+        Returns:
+            List: Lista kaikista lisätyistä kursseista.
+        """
+
         return self._course_repository.find_all()
 
     def get_courses_by_user(self):
+        """Hakee tietokannasta annetun käyttäjän lisäämät kurssit.
+
+        Returns:
+            List: Lista käyttäjän lisäämistä kursseista.
+        """
+
         return self._course_repository.find_courses_by_user(self._user.username)
 
 
