@@ -1,5 +1,5 @@
 from tkinter import ttk, constants, StringVar
-from services.service import service, UsernameExistsError
+from services.service import service, UsernameExistsError, InvalidCredentialsError
 
 
 class RegisterView:
@@ -24,12 +24,15 @@ class RegisterView:
         username = self._username_entry.get()
         password = self._password_entry.get()
 
-        try:
-            service.create_user(username, password)
-            print("uusi käyttäjä luotu")
-            self._handle_go_to_login()
-        except UsernameExistsError:
-            self._show_error(f"Käyttäjänimi {username} on jo käytössä")
+        if len(username) not in range(4,11) or len(password) not in range(4,11):
+            self._show_error(f"Sekä käyttäjänimen että salasanan tulee olla 4-10 merkkiä pitkä.")
+        else:
+            try:
+                service.create_user(username, password)
+                print("uusi käyttäjä luotu")
+                self._handle_go_to_login()
+            except UsernameExistsError:
+                self._show_error(f"Käyttäjänimi {username} on jo käytössä")
 
     def _show_error(self, message):
         self._error_variable.set(message)

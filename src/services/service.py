@@ -10,7 +10,7 @@ from repositories.course_repository import (
 
 
 class InvalidCredentialsError(Exception):
-    """Luokka, joka nostaa virheen, kun annettu käyttäjä tai salasana on väärin.
+    """Luokka, joka nostaa virheen, kun annettu käyttäjä tai salasana on väärin tai liian lyhyt.
 
     Args:
         Exception
