@@ -75,6 +75,18 @@ class CourseRepository:
         )
         result = cursor.fetchall()
         return list(map(get_course_by_row, result))
+    
+    def delete_course(self, name):
+        """Poistaa valitun kurssin tietokannasta.
+
+        Args:
+            name (str): Poistettavan kurssin nimi.
+        """
+        
+        cursor = self._connection.cursor()
+        cursor.execute('delete from courses where name=?', (name,)
+        )
+        self._connection.commit()
 
     def delete_all(self):
         """Tyhjentää koko kurssitietokannan.

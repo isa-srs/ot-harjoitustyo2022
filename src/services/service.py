@@ -135,6 +135,9 @@ class AppService:
         course = self._course_repository.add_course(Course(name, credits, self._user.username))
         return course
 
+    def delete_course(self, name):
+        return self._course_repository.delete_course(name)
+
     def get_all_courses(self):
         """Hakee tietokannasta kaikki kurssit.
 

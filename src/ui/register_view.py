@@ -1,5 +1,5 @@
 from tkinter import ttk, constants, StringVar
-from services.service import service, UsernameExistsError, InvalidCredentialsError
+from services.service import service, UsernameExistsError
 
 
 class RegisterView:
@@ -29,7 +29,6 @@ class RegisterView:
         else:
             try:
                 service.create_user(username, password)
-                print("uusi käyttäjä luotu")
                 self._handle_go_to_login()
             except UsernameExistsError:
                 self._show_error(f"Käyttäjänimi {username} on jo käytössä")
@@ -75,11 +74,9 @@ class RegisterView:
             command=self._create_user
         )
 
-        login_label = ttk.Label(
-            master=self._frame, text="Sinulla on jo tunnus?")
         login_button = ttk.Button(
             master=self._frame,
-            text="Kirjaudu sisään",
+            text="Takaisin kirjautumissivulle",
             command=self._handle_go_to_login
         )
 
@@ -93,7 +90,6 @@ class RegisterView:
 
         register_button.grid(columnspan=2, sticky=constants.EW, padx=5, pady=5)
 
-        login_label.grid(column=0, sticky=constants.EW)
         login_button.grid(columnspan=2, sticky=constants.EW, padx=5, pady=5)
 
         self._frame.grid_columnconfigure(1, weight=1, minsize=300)
