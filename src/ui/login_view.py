@@ -40,7 +40,7 @@ class LoginView:
         self._error_label.grid_remove()
 
     def _initialize_username_field(self):
-        username_label = ttk.Label(master=self._frame, text="Käyttäjänimi")
+        username_label = ttk.Label(master=self._frame, text="Käyttäjänimi", background="#f5cee3")
         self._username_entry = ttk.Entry(master=self._frame)
 
         username_label.grid(sticky=constants.W, padx=5, pady=5)
@@ -48,23 +48,36 @@ class LoginView:
             row=1, column=1, sticky=constants.EW, padx=5, pady=5)
 
     def _initialize_password_field(self):
-        password_label = ttk.Label(master=self._frame, text="Salasana")
+        password_label = ttk.Label(master=self._frame, text="Salasana", background="#f5cee3")
         self._password_entry = ttk.Entry(master=self._frame)
 
         password_label.grid(sticky=constants.W, padx=5, pady=5)
         self._password_entry.grid(
             row=2, column=1, sticky=constants.EW, padx=5, pady=5)
 
+    def _initialize_style(self):
+        frame_style = ttk.Style()
+        frame_style.configure("TFrame", background="#f5cee3")
+
+        button_style = ttk.Style()
+        button_style.configure("TButton", background="#f0a8ce")
+
+        label_style = ttk.Style()
+        label_style.configure("TLabel", background="#f5cee3")
+
     def _initialize(self):
+        self._initialize_style()
+
         self._frame = ttk.Frame(master=self._root)
 
-        heading_label = ttk.Label(master=self._frame, text="Kirjaudu sisään")
+        heading_label = ttk.Label(master=self._frame, text="Kirjaudu sisään", background="#f5cee3")
 
         self._error_variable = StringVar(self._frame)
         self._error_label = ttk.Label(
             master=self._frame,
             textvariable=self._error_variable,
-            foreground="red"
+            foreground="red",
+            background="#f5cee3"
         )
 
         login_button = ttk.Button(
@@ -73,7 +86,7 @@ class LoginView:
             command=self._login
         )
 
-        register_label = ttk.Label(master=self._frame, text="Ei tunnusta?")
+        register_label = ttk.Label(master=self._frame, text="Ei tunnusta?", background="#f5cee3")
         register_button = ttk.Button(
             master=self._frame,
             text="Luo uusi tunnus",

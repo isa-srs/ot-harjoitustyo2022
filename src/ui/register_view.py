@@ -55,8 +55,20 @@ class RegisterView:
         password_label.grid(sticky=constants.W, padx=5, pady=5)
         self._password_entry.grid(
             row=2, column=1, sticky=constants.EW, padx=5, pady=5)
+    
+    def _initialize_style(self):
+        frame_style = ttk.Style()
+        frame_style.configure("TFrame", background="#f5cee3")
+
+        button_style = ttk.Style()
+        button_style.configure("TButton", background="#f0a8ce")
+
+        label_style = ttk.Style()
+        label_style.configure("TLabel", background="#f5cee3")
 
     def _initialize(self):
+        self._initialize_style()
+        
         self._frame = ttk.Frame(master=self._root)
 
         heading_label = ttk.Label(master=self._frame, text="Rekisteröidy")

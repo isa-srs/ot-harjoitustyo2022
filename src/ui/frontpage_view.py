@@ -1,4 +1,4 @@
-from tkinter import ttk, constants, Listbox
+from tkinter import ttk, constants
 from services.service import service
 
 
@@ -103,8 +103,20 @@ class FrontPageView:
         user_label.grid(columnspan=2, sticky=constants.W, padx=5, pady=5)
         logout_button.grid(row=0, column=1, sticky=constants.SE, padx=5)
         credits_label.grid(sticky=constants.W, padx=5, pady=5)
+    
+    def _initialize_style(self):
+        frame_style = ttk.Style()
+        frame_style.configure("TFrame", background="#f5cee3")
+
+        button_style = ttk.Style()
+        button_style.configure("TButton", background="#f0a8ce")
+
+        label_style = ttk.Style()
+        label_style.configure("TLabel", background="#f5cee3")
 
     def _initialize(self):
+        self._initialize_style()
+
         self._frame = ttk.Frame(master=self._root)
         self._course_list_frame = ttk.Frame(master=self._frame)
 
