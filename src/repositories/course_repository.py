@@ -44,7 +44,7 @@ class CourseRepository:
         )
         self._connection.commit()
         return course
-    
+
     def get_current_course(self, course):
         cursor = self._connection.cursor()
         cursor.execute(
@@ -59,7 +59,7 @@ class CourseRepository:
             'update courses set grade = ? where name=?', (grade, course,)
         )
         self._connection.commit()
-    
+
     def find_courses_by_user(self, user):
         """Hakee kaikki yhden käyttäjän lisäämät kurssit.
 
@@ -76,7 +76,7 @@ class CourseRepository:
         )
         courses = cursor.fetchall()
         return list(map(get_course_by_row, courses))
-    
+
     def find_not_completed_courses_by_user(self, user):
         cursor = self._connection.cursor()
         cursor.execute(
@@ -106,14 +106,14 @@ class CourseRepository:
         )
         result = cursor.fetchall()
         return list(map(get_course_by_row, result))
-    
+
     def delete_course(self, name):
         """Poistaa valitun kurssin tietokannasta.
 
         Args:
             name (str): Poistettavan kurssin nimi.
         """
-        
+
         cursor = self._connection.cursor()
         cursor.execute('delete from courses where name=?', (name,)
         )
