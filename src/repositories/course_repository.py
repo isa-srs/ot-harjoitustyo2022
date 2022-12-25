@@ -46,6 +46,14 @@ class CourseRepository:
         return course
 
     def get_current_course(self, course):
+        """Hakee kurssin, jolle ollaan merkitsemässä arvosanaa. Arvo aina None, paitsi ollessa set_grade-näkymässä.
+
+        Args:
+            course (str): Course-oliosta poimittu kurssin nimi
+
+        Returns:
+            course.name (str): Löydetyn kurssin nimi
+        """
         cursor = self._connection.cursor()
         cursor.execute(
             'select * from courses where name=?', (course,)
@@ -54,6 +62,12 @@ class CourseRepository:
         return course.name
 
     def set_course_completed(self, course, grade):
+        """Merkitsee kurssin suoritetuksi eli muuttaa sen arvosanan joksikin muuksi kuin nollaksi (0).
+
+        Args:
+            course (str): Course-oliosta poimittu kurssin nimi
+            grade (str): Käyttäjän syöttämä arvosana
+        """
         cursor = self._connection.cursor()
         cursor.execute(
             'update courses set grade = ? where name=?', (grade, course,)
@@ -78,6 +92,14 @@ class CourseRepository:
         return list(map(get_course_by_row, courses))
 
     def find_not_completed_courses_by_user(self, user):
+        """Hakee kaikki kesken olevat kurssit käyttäjänimen perusteella
+
+        Args:
+            user (str): Käyttäjänimi, jonka kurssit halutaan hakea
+
+        Returns:
+            List: Lista löydetyistä kursseista
+        """
         cursor = self._connection.cursor()
         cursor.execute(
             'select * from courses where user=? and grade=0', (user,)
@@ -86,6 +108,14 @@ class CourseRepository:
         return list(map(get_course_by_row, courses))
 
     def find_completed_courses_by_user(self, user):
+        """Hakee kaikki suoritetut kurssit käyttäjänimen perusteella.
+
+        Args:
+            user (str): Käyttäjänimi, jonka kurssit halutaan hakea
+
+        Returns:
+            List: Lista löydetyistä kursseista
+        """
         cursor = self._connection.cursor()
         cursor.execute(
             'select * from courses where user=? and grade>0', (user,)

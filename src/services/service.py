@@ -147,21 +147,52 @@ class AppService:
         return self._course_repository.find_courses_by_user(self._user.username)
 
     def set_current_course(self, course):
+        """Asettaa self._coursen arvoksi kurssin, jolle ollaan sillä hetkellä merkitsemässä arvosana. Muulloin arvona on None.
+
+        Args:
+            course (None tai Course-olio): Kurssi-olio tai None, riippuen onko sillä hetkellä kurssia valittuna.
+        """
         self._course = course
 
     def get_current_course(self):
+        """Hakee kurssin, jolle ollaan sillä hetkellä merkitsemässä arvosanaa.
+
+        Returns:
+            Course: Course-olio
+        """
         return self._course
 
     def get_not_completed_courses_by_user(self):
+        """Hakee tietokannasta käyttäjän kaikki kesken olevat kurssit.
+
+        Returns:
+            List: Lista löydetyistä kursseista.
+        """
         return self._course_repository.find_not_completed_courses_by_user(self._user.username)
 
     def get_completed_courses_by_user(self):
+        """Hakee tietokannasta käyttäjän kaikki suoritetut kurssit.
+
+        Returns:
+            List: Lista löydetyistä kursseista.
+        """
         return self._course_repository.find_completed_courses_by_user(self._user.username)
 
     def set_course_completed(self, course, grade):
+        """Merkitsee annetulle kurssille arvosanan kurssirepositorion kautta.
+
+        Args:
+            course (Course): Kurssi-olio
+            grade (str): Merkkijonoarvona käyttäjän syöttämä arvosana
+        """
         self._course_repository.set_course_completed(course.name, grade)
 
     def get_credit_and_grade_average(self):
+        """Hakee tietokannasta kaikki käyttäjän suorittamat kurssit sekä laskee opintopisteiden keskimäärän ja arvosanojen keskiarvon.
+
+        Returns:
+            Tuple: Opintopisteiden pistemäärä ja arvosanojen keskiarvo pyöristettynä kahteen desimaaliin.
+        """
         courses = self.get_completed_courses_by_user()
         credit = 0
         grade_average = 0

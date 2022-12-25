@@ -6,7 +6,8 @@ class Course:
 
         Args:
             name (str): Kurssin nimi
-            credits (str): Kurssin opintopisteet
+            grade (str): Kurssista saatu arvosana (0, jos kurssi edelleen kesken)
+            credit (str): Kurssin opintopisteet
             user (str): Käyttäjän käyttäjänimi, joka lisäsi kurssin
         """
 
