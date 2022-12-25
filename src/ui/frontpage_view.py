@@ -92,7 +92,7 @@ class FrontPageView:
         self._frame = None
         self._user = service.get_current_user()
         self._credits_and_grade_average = service.get_credits_and_grade_average()
-        self._all_courses = service.get_all_courses()
+        self._all_courses = service.get_courses_by_user()
         self._completed_courses = service.get_completed_courses_by_user()
         self._not_completed_courses = service.get_not_completed_courses_by_user()
         self._course_list_view = None
@@ -185,13 +185,12 @@ class FrontPageView:
         if len(self._all_courses) == 0:
             no_courses = ttk.Label(master=self._frame, text="Et ole lisännyt vielä kursseja.")
             no_courses.grid(sticky=constants.W, padx=5, pady=5)
-        
-        if len(self._all_courses) > 0:
-            _courses_label = ttk.Label(
+        elif len(self._all_courses) > 0:
+            courses_label = ttk.Label(
                 master=self._frame,
                 text="Kaikki kurssit:"
             )
-            _courses_label.grid(sticky=constants.W, padx=5, pady=5)
+            courses_label.grid(sticky=constants.W, padx=5, pady=5)
 
         self._initialize_course_list()
         self._course_list_frame.grid(columnspan=2, sticky=constants.EW)

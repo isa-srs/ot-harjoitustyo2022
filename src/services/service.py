@@ -179,7 +179,8 @@ class AppService:
         for course in courses:
             credits += int(course.credits)
             grade_average += int(course.grade)
-        grade_average = grade_average/len(courses)
+        if len(courses) > 0:
+            grade_average = grade_average/len(courses)
 
         return (credits, round(grade_average,2))
     
