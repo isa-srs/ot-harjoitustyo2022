@@ -24,6 +24,7 @@ def create_tables(connection):
         create table courses (
             name text primary key,
             credits text,
+            completed text,
             user text
         );
     """)

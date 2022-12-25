@@ -132,7 +132,7 @@ class AppService:
 
         # todo: tarkista jos kurssi olemassa
 
-        course = self._course_repository.add_course(Course(name, credits, self._user.username))
+        course = self._course_repository.add_course(Course(name, credits, "0", self._user.username))
         return course
 
     def delete_course(self, name):
@@ -155,6 +155,9 @@ class AppService:
         """
 
         return self._course_repository.find_courses_by_user(self._user.username)
+
+    def set_course_completed(self, course):
+        self._course_repository.set_course_completed(course.name)
 
     def all_credits(self):
         courses = self.get_courses_by_user()

@@ -11,7 +11,7 @@ def get_course_by_row(row):
     Returns:
         Course: Haettu kurssi Course-oliona.
     """
-    return Course(row["name"], row["credits"], row["user"]) if row else None
+    return Course(row["name"], row["credits"], row["completed"], row["user"]) if row else None
 
 
 class CourseRepository:
@@ -39,11 +39,18 @@ class CourseRepository:
 
         cursor = self._connection.cursor()
         cursor.execute(
-            'insert into courses (name, credits, user) values (?,?,?)',
-            (course.name, course.credits, course.user)
+            'insert into courses (name, credits, completed, user) values (?,?,?,?)',
+            (course.name, course.credits, course.completed, course.user)
         )
         self._connection.commit()
         return course
+
+    def set_course_completed(self, course):
+        cursor = self._connection.cursor()
+        cursor.execute(
+            'update courses set completed = "1" where name=?', (course,)
+        )
+        self._connection.commit()
 
     def find_courses_by_user(self, user):
         """Hakee kaikki yhden käyttäjän lisäämät kurssit.
