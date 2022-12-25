@@ -172,13 +172,17 @@ class AppService:
     def set_course_completed(self, course, grade):
         self._course_repository.set_course_completed(course.name, grade)
 
-    def all_credits(self):
+    def get_credits_and_grade_average(self):
         courses = self.get_completed_courses_by_user()
         credits = 0
+        grade_average = 0
         for course in courses:
             credits += int(course.credits)
+            grade_average += int(course.grade)
+        grade_average = grade_average/len(courses)
 
-        return credits
+        return (credits, round(grade_average,2))
+    
 
 
 service = AppService()

@@ -91,7 +91,7 @@ class FrontPageView:
         self._handle_set_grade = handle_set_grade
         self._frame = None
         self._user = service.get_current_user()
-        self._all_credits = service.all_credits()
+        self._credits_and_grade_average = service.get_credits_and_grade_average()
         self._all_courses = service.get_all_courses()
         self._completed_courses = service.get_completed_courses_by_user()
         self._not_completed_courses = service.get_not_completed_courses_by_user()
@@ -145,12 +145,18 @@ class FrontPageView:
 
         credits_label = ttk.Label(
             master=self._frame,
-            text=f"Opintopisteesi yhteensä {self._all_credits}"
+            text=f"Opintopisteesi yhteensä {self._credits_and_grade_average[0]}"
+        )
+
+        grade_average_label = ttk.Label(
+            master=self._frame,
+            text=f"Arvosanojen keskiarvo: {self._credits_and_grade_average[1]}"
         )
 
         user_label.grid(columnspan=2, sticky=constants.W, padx=5, pady=5)
         logout_button.grid(row=0, column=1, sticky=constants.SE, padx=5)
         credits_label.grid(sticky=constants.W, padx=5, pady=5)
+        grade_average_label.grid(sticky=constants.W, padx=5, pady=5)
     
     def _initialize_style(self):
         frame_style = ttk.Style()
@@ -180,12 +186,12 @@ class FrontPageView:
             no_courses = ttk.Label(master=self._frame, text="Et ole lisännyt vielä kursseja.")
             no_courses.grid(sticky=constants.W, padx=5, pady=5)
         
-        if len(self._not_completed_courses) > 0:
-            not_completed_courses_label = ttk.Label(
+        if len(self._all_courses) > 0:
+            _courses_label = ttk.Label(
                 master=self._frame,
                 text="Kaikki kurssit:"
             )
-            not_completed_courses_label.grid(sticky=constants.W, padx=5, pady=5)
+            _courses_label.grid(sticky=constants.W, padx=5, pady=5)
 
         self._initialize_course_list()
         self._course_list_frame.grid(columnspan=2, sticky=constants.EW)
