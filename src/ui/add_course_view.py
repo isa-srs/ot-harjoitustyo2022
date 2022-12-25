@@ -62,10 +62,10 @@ class AddCourseView:
         frame_style.configure("TFrame", background="#f5cee3")
 
         button_style = ttk.Style()
-        button_style.configure("TButton", background="#f0a8ce")
+        button_style.configure("TButton", background="#f0a8ce", font="Verdana")
 
         label_style = ttk.Style()
-        label_style.configure("TLabel", background="#f5cee3")
+        label_style.configure("TLabel", background="#f5cee3", font="Verdana")
 
     def _initialize(self):
         self._initialize_style()

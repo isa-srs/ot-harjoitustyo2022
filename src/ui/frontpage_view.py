@@ -3,9 +3,10 @@ from services.service import service
 
 
 class CourseListView:
-    def __init__(self, root, courses, handle_delete_course):
+    def __init__(self, root, courses, handle_course_completed, handle_delete_course):
         self._root = root
         self._courses = courses
+        self._handle_course_completed = handle_course_completed
         self._handle_delete_course = handle_delete_course
         self._frame = None
 
@@ -23,6 +24,12 @@ class CourseListView:
         name_label = ttk.Label(master=item_frame, text=f"{course.name}")
         credit_label = ttk.Label(master=item_frame, text=f"{course.credits} op")
 
+        completed_button = ttk.Button(
+            master=item_frame,
+            text="Merkitse suoritetuksi",
+            command=self._handle_course_completed
+        )
+
         delete_button = ttk.Button(
             master=item_frame,
             text="Poista",
@@ -30,8 +37,9 @@ class CourseListView:
         )
 
         name_label.grid(sticky=constants.W, padx=5, pady=5)
-        credit_label.grid(sticky=constants.W, padx=5, pady=5)
-        delete_button.grid(sticky=constants.W, padx=5, pady=5)
+        credit_label.grid(row=0, column=1, sticky=constants.W, padx=5, pady=5)
+        completed_button.grid(row=0, column=2, sticky=constants.W, padx=5, pady=5)
+        delete_button.grid(row=0, column=3, sticky=constants.W, padx=5, pady=5)
 
         item_frame.grid_columnconfigure(0, weight=1)
         item_frame.pack(fill=constants.X)
@@ -67,6 +75,10 @@ class FrontPageView:
         service.logout()
         self._handle_to_go_login()
     
+    def _handle_course_completed(self, course):
+        service.set_course_completed(course)
+        self._initialize_course_list()
+    
     def _handle_delete_course(self, course):
         service.delete_course(course.name)
         self._initialize_course_list()
@@ -78,6 +90,7 @@ class FrontPageView:
         self._course_list_view = CourseListView(
             self._course_list_frame,
             self._courses,
+            self._handle_course_completed,
             self._handle_delete_course
         )
 
@@ -109,10 +122,10 @@ class FrontPageView:
         frame_style.configure("TFrame", background="#f5cee3")
 
         button_style = ttk.Style()
-        button_style.configure("TButton", background="#f0a8ce")
+        button_style.configure("TButton", background="#f0a8ce", font="Verdana")
 
         label_style = ttk.Style()
-        label_style.configure("TLabel", background="#f5cee3")
+        label_style.configure("TLabel", background="#f5cee3", font="Verdana")
 
     def _initialize(self):
         self._initialize_style()
@@ -131,15 +144,15 @@ class FrontPageView:
         if len(self._courses) == 0:
             no_courses = ttk.Label(master=self._frame, text="Et ole lisännyt vielä kursseja.")
             no_courses.grid(sticky=constants.W, padx=5, pady=5)
-            
-        add_course_button.grid(sticky=constants.W, padx=5, pady=5)
-        
-        if len(self._courses) > 0:
+        else:
             course_label = ttk.Label(master=self._frame, text="Kurssit:")
             course_label.grid(sticky=constants.W, padx=5, pady=5)
+        
+        add_course_button.grid(sticky=constants.W, padx=5, pady=5)
         
         self._initialize_course_list()
         self._course_list_frame.grid(columnspan=2, sticky=constants.EW)
 
         self._frame.grid_columnconfigure(0, weight=1, minsize=300)
         self._frame.grid_columnconfigure(1, weight=1)
+        self._frame.grid_rowconfigure(0, weight=1)

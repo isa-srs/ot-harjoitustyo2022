@@ -61,17 +61,17 @@ class RegisterView:
         frame_style.configure("TFrame", background="#f5cee3")
 
         button_style = ttk.Style()
-        button_style.configure("TButton", background="#f0a8ce")
+        button_style.configure("TButton", background="#f0a8ce", font="Verdana")
 
         label_style = ttk.Style()
-        label_style.configure("TLabel", background="#f5cee3")
+        label_style.configure("TLabel", background="#f5cee3", font="Verdana")
 
     def _initialize(self):
         self._initialize_style()
         
         self._frame = ttk.Frame(master=self._root)
 
-        heading_label = ttk.Label(master=self._frame, text="Rekisteröidy")
+        heading_label = ttk.Label(master=self._frame, text="Rekisteröityminen")
 
         self._error_variable = StringVar(self._frame)
         self._error_label = ttk.Label(
