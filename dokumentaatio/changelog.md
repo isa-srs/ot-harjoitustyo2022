@@ -23,3 +23,12 @@
 
 - Opiskelija näkee etusivulla kurssien opintopisteiden kokonaismäärän
 
+## Viikko 7
+
+- Loppupalautus
+- Opiskelija näkee etusivulla kurssien opintopisteiden kokonaismäärän (korjattu)
+- Opiskelija näkee vain omat kurssinsa etusivulla (ei kaikkia tietokannasta löytyviä kursseja)
+- Opiskelija voi merkitä kursseja suoritetuiksi
+- Lisätty näkymä SetGrade ja sitä vastaava SetGrade-luokka
+- Lisätty testejä CourseRepositorylle
+
