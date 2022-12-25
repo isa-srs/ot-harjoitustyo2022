@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa sovelluksen lähdekoodi viimeisimmästä releasesta.
+Lataa sovelluksen lähdekoodi [Releaset](https://github.com/isa-srs/ot-harjoitustyo2022/releases)-sivulta löytyvästä viimeisimmästä releasesta.
 
 ## Sovelluksen käyttöönotto
 
