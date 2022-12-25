@@ -27,7 +27,6 @@ class LoginView:
 
         try:
             service.login(username, password)
-            print("sisäänkirjautuminen onnistui")
             self._handle_login()
         except InvalidCredentialsError:
             self._show_error("Käyttäjänimi tai salasana ei täsmää")
