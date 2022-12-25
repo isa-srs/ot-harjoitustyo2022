@@ -93,20 +93,6 @@ class CourseRepository:
         courses = cursor.fetchall()
         return list(map(get_course_by_row, courses))
 
-    def find_all(self):
-        """Hakee tietokannasta kaikki kurssit.
-
-        Returns:
-            List: Lista kaikista kursseista.
-        """
-
-        cursor = self._connection.cursor()
-        cursor.execute(
-            'select * from courses'
-        )
-        result = cursor.fetchall()
-        return list(map(get_course_by_row, result))
-
     def delete_course(self, name):
         """Poistaa valitun kurssin tietokannasta.
 

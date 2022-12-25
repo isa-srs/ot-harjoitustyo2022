@@ -137,15 +137,6 @@ class AppService:
     def delete_course(self, name):
         return self._course_repository.delete_course(name)
 
-    def get_all_courses(self):
-        """Hakee tietokannasta kaikki kurssit.
-
-        Returns:
-            List: Lista kaikista lisätyistä kursseista.
-        """
-
-        return self._course_repository.find_all()
-
     def get_courses_by_user(self):
         """Hakee tietokannasta annetun käyttäjän lisäämät kurssit.
 
