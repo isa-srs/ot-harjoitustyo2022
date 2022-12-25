@@ -14,6 +14,11 @@
 | 6.11.  | 2   | kurssit näkyvät etusivulla |
 | 13.12. | 1   | docstring |
 | | 1   | koodin siistimistä ja lisätty opintopisteiden kokonaismäärä |
-| yht.  | 20  | |
+| 15.12. | 3   | ulkoasun tekoa |
+| 25.12. | 3   | kurssien merkitseminen suoritetuksi |
+| | 2   | ulkoasun tekoa |
+| | 0.5 | opintopisteet ja arvosanojen keskiarvo |
+| | 2.5 | dokumentaatio |
+| yht.  | 31  | |
 
 
