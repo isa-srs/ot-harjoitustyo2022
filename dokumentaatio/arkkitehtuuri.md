@@ -56,7 +56,38 @@ SQLite-tietokannan tauluun _users_ tallennetaan käyttäjien käyttäjänimi ja 
 
 ## Päätoiminnallisuudet
 
+Ohessa kuvataan sovelluksen päätoiminnallisuuksien etenemistä sekvenssikaavioiden avulla.
+
 ### Uuden käyttäjän luominen
 
+Sovelluksen kontrolli etenee seuraavalla tavalla, kun käyttäjän syöttämät tunnukset ovat kelvolliset eli sekä käyttäjänimi että salasana ovat 4-10 merkin pituisia ja käyttäjänimi ei ole vielä käytössä.
+
 ![create_user_diagram](./kuvat/create_user_diagram.png)
+
+Kun käyttäjä painaa painiketta "Luo käyttäjä", tapahtumakäsittelijä kutsuu metodia create_user parametreina käyttäjän käyttäjänimi ja salasana. Käyttäjärepositorion avulla selvitetään, onko annettu käyttäjätunnus jo olemassa. Jos ei, niin uusi käyttäjä on mahdollista luoda ja luodaankin olio `User`, jonka tiedot tallennetaan tietokantaan. Käyttäjä kirjataan sitten sisään ja näkymäksi vaihdetaan `LoginView`, josta käyttäjä pääsee kirjautumaan juuri luomillaan tunnuksilla sisään.
+
+### Sisäänkirjautuminen
+
+Sovelluksen tapahtumat etenevät seuraavalla tavalla, kun käyttäjän syöttämät tunnukset täsmäävät.
+
+![login_diagram](./kuvat/login_diagram.png)
+
+Kun käyttäjä painaa painiketta "Kirjaudu sisään", tapahtumankäsittelijä kutsuu metodia login parametreinaan käyttäjän käyttäjänimi ja salasana, minkä jälkeen tarkistetaan UserRepositoryn avulla, onko käyttäjää olemassa. Jos käyttäjä on olemassa ja salasana täsmää, niin näkymäksi vaihdetaan `FrontPageView` eli etusivu/kurssinäkymä.
+
+### Kurssin lisääminen
+
+Sovelluksen tapahtumat etenevät seuraavalla tavalla, kun käyttäjä haluaa lisätä uuden kurssin.
+
+![add_course_diagram](./kuvat/add_course_diagram.png)
+
+Kun käyttäjä painaa painiketta "Lisää kurssi", tapahtumankäsittelijä kutsuu metodia `add_course` parametreinaan kurssin nimi ja siitä saatavien opintopisteiden määrä. `AppService` lähettää tiedon eteenpäin kurssirepositoriolle kutsumalla sen metodia add course, jolla on parametrinä `Course`-olio, jolla on tietoina kurssin nimi, opintopisteiden määrä, arvosana (0, kun kurssi ei ole vielä suoritettu) ja käyttäjänimi. Kurssi on lisätty onnistuneesti, jos samannimistä kurssia ei ole vielä olemassa tietokannassa. Tämän jälkeen näkymäksi vaihtuu `FrontPageView`.
+
+### Kurssin merkitseminen suoritetuksi
+
+Sovelluksen tapahtumat etenevät seuraavalla tavalla, kun käyttäjä haluaa merkitä kurssin suoritetuksi.
+
+![set_grade_diagram](./kuvat/set_grade_diagram.png)
+
+Kun käyttäjä on syöttänyt kurssille arvosanaksi numeron väliltä 1-5 ja painanut nappia "Merkitse suoritetuksi", tapahtumankäsittelijä kutsuu metodia `set_course_done`, jolla on parametreinä kurssin nimi ja käyttäjän syöttämä arvosana. `AppService` kutsuu kurssirepositorion metodia `set_course_completed` samoilla parametreilla ja tietokantaan tallennetaan kurssille uusi arvosana. `AppService` kutsuu myös kurssirepositorion metodia `set_current_course`, joka vaihtaa repositorion "current course" arvoksi None, eli sillä hetkellä ei käsitellä enää mitään tiettyä kurssia. Tämän jälkeen käyttäjä palaa automaattisesti sovelluksen etusivulle.
+
 
