@@ -84,10 +84,11 @@ class CourseListView:
 
 
 class FrontPageView:
-    def __init__(self, root, handle_go_to_login, handle_add_course):
+    def __init__(self, root, handle_go_to_login, handle_add_course, handle_set_grade):
         self._root = root
         self._handle_go_to_login = handle_go_to_login
         self._handle_add_course = handle_add_course
+        self._handle_set_grade = handle_set_grade
         self._frame = None
         self._user = service.get_current_user()
         self._all_credits = service.all_credits()
@@ -110,8 +111,8 @@ class FrontPageView:
         self._handle_go_to_login()
     
     def _handle_course_completed(self, course):
-        service.set_course_completed(course)
-        self._initialize_course_list()
+        service.set_current_course(course)
+        self._handle_set_grade()
     
     def _handle_delete_course(self, course):
         service.delete_course(course.name)

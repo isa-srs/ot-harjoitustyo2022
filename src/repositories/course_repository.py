@@ -44,6 +44,14 @@ class CourseRepository:
         )
         self._connection.commit()
         return course
+    
+    def get_current_course(self, course):
+        cursor = self._connection.cursor()
+        cursor.execute(
+            'select * from courses where name=?', (course,)
+        )
+        course = cursor.fetchone()
+        return course.name
 
     def set_course_completed(self, course, grade):
         cursor = self._connection.cursor()
@@ -52,16 +60,6 @@ class CourseRepository:
         )
         self._connection.commit()
     
-    def check_if_course_completed(self, course):
-        cursor = self._connection.cursor()
-        cursor.execute(
-            'select grade from courses where name=?', (course,)
-        )
-        course = cursor.fetchone()
-        if course == 1:
-            return True
-        return False
-
     def find_courses_by_user(self, user):
         """Hakee kaikki yhden käyttäjän lisäämät kurssit.
 
