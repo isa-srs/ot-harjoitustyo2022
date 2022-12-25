@@ -51,6 +51,16 @@ class CourseRepository:
             'update courses set completed = "1" where name=?', (course,)
         )
         self._connection.commit()
+    
+    def check_if_course_completed(self, course):
+        cursor = self._connection.cursor()
+        cursor.execute(
+            'select completed from courses where name=?', (course,)
+        )
+        course = cursor.fetchone()
+        if course == 1:
+            return True
+        return False
 
     def find_courses_by_user(self, user):
         """Hakee kaikki yhden käyttäjän lisäämät kurssit.
@@ -65,6 +75,22 @@ class CourseRepository:
         cursor = self._connection.cursor()
         cursor.execute(
             'select * from courses where user=?', (user,)
+        )
+        courses = cursor.fetchall()
+        return list(map(get_course_by_row, courses))
+    
+    def find_not_completed_courses_by_user(self, user):
+        cursor = self._connection.cursor()
+        cursor.execute(
+            'select * from courses where user=? and completed=0', (user,)
+        )
+        courses = cursor.fetchall()
+        return list(map(get_course_by_row, courses))
+
+    def find_completed_courses_by_user(self, user):
+        cursor = self._connection.cursor()
+        cursor.execute(
+            'select * from courses where user=? and completed=1', (user,)
         )
         courses = cursor.fetchall()
         return list(map(get_course_by_row, courses))

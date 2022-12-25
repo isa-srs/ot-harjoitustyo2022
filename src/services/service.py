@@ -156,11 +156,20 @@ class AppService:
 
         return self._course_repository.find_courses_by_user(self._user.username)
 
+    def get_not_completed_courses_by_user(self):
+        return self._course_repository.find_not_completed_courses_by_user(self._user.username)
+
+    def get_completed_courses_by_user(self):
+        return self._course_repository.find_completed_courses_by_user(self._user.username)
+
     def set_course_completed(self, course):
         self._course_repository.set_course_completed(course.name)
 
+    def check_if_course_completed(self, course):
+        return self._course_repository.check_if_course_completed(course.name)
+
     def all_credits(self):
-        courses = self.get_courses_by_user()
+        courses = self.get_completed_courses_by_user()
         credits = 0
         for course in courses:
             credits += int(course.credits)
