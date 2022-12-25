@@ -2,11 +2,16 @@
 
 Sovellus on tarkoitettu auttamaan opiskelijoita seuraamaan opintojen etenemistä ja kurssisuorituksia. Opiskelija voi lisätä sovellukseen hänen käymiään kursseja ja niistä saatuja tuloksia.
 
+## Python-versio
+
+Sovellusta on testattu Pythonin versiolla `3.8`, joten vanhempien versioiden kanssa saattaa esiintyä ongelmia.
+
 ## Dokumentaatio
 
 - [Arkkitehtuuri](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/arkkitehtuuri.md)
 - [Changelog](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/changelog.md)
 - [Käyttöohje](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/kayttoohje.md)
+- [Testausdokumentti](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/testaus.md)
 - [Työaikakirjanpito](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/tuntikirjanpito.md)
 - [Vaatimusmäärittely](https://github.com/isa-srs/ot-harjoitustyo2022/blob/main/dokumentaatio/vaatimusmaarittely.md)
 
@@ -32,6 +37,11 @@ poetry run invoke start
 
 ## Komentorivikomennot
 
+### Ohjelman ja tietokantojen alustaminen
+```bash
+poetry run invoke build
+```
+
 ### Ohjelman suorittaminen
 
 ```bash
@@ -50,15 +60,7 @@ poetry run invoke test
 poetry run invoke coverage-report
 ```
 
-Huom! Komento ei välttämättä toimi tällä hetkellä kuten pitää. Silloin suorita komennot:
-
-```bash
-poetry shell
-```
-
-```bash
-coverage html
-```
+Generoitu raportti löytyy hakemistosta _htmlcov_.
 
 ### Pylint
 
