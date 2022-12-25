@@ -75,3 +75,24 @@ class TestAppService(unittest.TestCase):
         current_user = self.service.get_current_user()
 
         self.assertEqual(current_user.username, self.user_isabel.username)
+    
+    def test_login_with_wrong_credentials(self):
+        user = self.user_isabel
+
+        self.service.create_user(user.username, user.password)
+
+        self.assertRaises(
+            InvalidCredentialsError,
+            lambda: self.service.login(user.username, "jotain")
+        )
+    
+    def test_logout(self):
+        user = self.service.create_user(self.user_isabel.username, self.user_isabel.password)
+
+        self.service.login(user.username, user.password)
+        self.service.logout()
+
+        current_user = self.service.get_current_user()
+
+        self.assertEqual(current_user, None)
+    
