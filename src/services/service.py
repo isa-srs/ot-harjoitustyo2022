@@ -120,20 +120,18 @@ class AppService:
 
         return self._user
 
-    def add_course(self, name, credits):
+    def add_course(self, name, credit):
         """Lisää uuden kurssin tietokantaan.
 
         Args:
             name (str): Kurssin nimi
-            credits (str): Kurssin opintopisteet
+            credit (str): Kurssin opintopisteet
 
         Returns:
             Course: Lisätty kurssi Course-oliona.
         """
 
-        # todo: tarkista jos kurssi olemassa
-
-        course = self._course_repository.add_course(Course(name, credits, "0", self._user.username))
+        course = self._course_repository.add_course(Course(name, credit, "0", self._user.username))
         return course
 
     def delete_course(self, name):
@@ -172,18 +170,18 @@ class AppService:
     def set_course_completed(self, course, grade):
         self._course_repository.set_course_completed(course.name, grade)
 
-    def get_credits_and_grade_average(self):
+    def get_credit_and_grade_average(self):
         courses = self.get_completed_courses_by_user()
-        credits = 0
+        credit = 0
         grade_average = 0
         for course in courses:
-            credits += int(course.credits)
+            credit += int(course.credit)
             grade_average += int(course.grade)
         if len(courses) > 0:
             grade_average = grade_average/len(courses)
 
-        return (credits, round(grade_average,2))
-    
+        return (credit, round(grade_average,2))
+
 
 
 service = AppService()

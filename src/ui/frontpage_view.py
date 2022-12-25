@@ -22,7 +22,7 @@ class CourseListView:
         item_frame = ttk.Frame(master=self._frame)
 
         name_label = ttk.Label(master=item_frame, text=f"{course.name}")
-        credit_label = ttk.Label(master=item_frame, text=f"{course.credits} op")
+        credit_label = ttk.Label(master=item_frame, text=f"{course.credit} op")
 
         completed_button = ttk.Button(
             master=item_frame,
@@ -49,7 +49,7 @@ class CourseListView:
         item_frame = ttk.Frame(master=self._frame)
 
         name_label = ttk.Label(master=item_frame, text=f"{course.name}")
-        credit_label = ttk.Label(master=item_frame, text=f"{course.credits} op")
+        credit_label = ttk.Label(master=item_frame, text=f"{course.credit} op")
 
         grade_label = ttk.Label(
             master=item_frame,
@@ -91,7 +91,7 @@ class FrontPageView:
         self._handle_set_grade = handle_set_grade
         self._frame = None
         self._user = service.get_current_user()
-        self._credits_and_grade_average = service.get_credits_and_grade_average()
+        self._credit_and_grade_average = service.get_credit_and_grade_average()
         self._all_courses = service.get_courses_by_user()
         self._completed_courses = service.get_completed_courses_by_user()
         self._not_completed_courses = service.get_not_completed_courses_by_user()
@@ -143,19 +143,19 @@ class FrontPageView:
             command=self._logout
         )
 
-        credits_label = ttk.Label(
+        credit_label = ttk.Label(
             master=self._frame,
-            text=f"Opintopisteesi yhteensä {self._credits_and_grade_average[0]}"
+            text=f"Opintopisteesi yhteensä {self._credit_and_grade_average[0]}"
         )
 
         grade_average_label = ttk.Label(
             master=self._frame,
-            text=f"Arvosanojen keskiarvo: {self._credits_and_grade_average[1]}"
+            text=f"Arvosanojen keskiarvo: {self._credit_and_grade_average[1]}"
         )
 
         user_label.grid(columnspan=2, sticky=constants.W, padx=5, pady=5)
         logout_button.grid(row=0, column=1, sticky=constants.SE, padx=5)
-        credits_label.grid(sticky=constants.W, padx=5, pady=5)
+        credit_label.grid(sticky=constants.W, padx=5, pady=5)
         grade_average_label.grid(sticky=constants.W, padx=5, pady=5)
     
     def _initialize_style(self):

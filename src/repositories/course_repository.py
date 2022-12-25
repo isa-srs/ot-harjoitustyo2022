@@ -11,7 +11,7 @@ def get_course_by_row(row):
     Returns:
         Course: Haettu kurssi Course-oliona.
     """
-    return Course(row["name"], row["credits"], row["grade"], row["user"]) if row else None
+    return Course(row["name"], row["credit"], row["grade"], row["user"]) if row else None
 
 
 class CourseRepository:
@@ -39,8 +39,8 @@ class CourseRepository:
 
         cursor = self._connection.cursor()
         cursor.execute(
-            'insert into courses (name, credits, grade, user) values (?,?,?,?)',
-            (course.name, course.credits, course.grade, course.user)
+            'insert into courses (name, credit, grade, user) values (?,?,?,?)',
+            (course.name, course.credit, course.grade, course.user)
         )
         self._connection.commit()
         return course

@@ -29,12 +29,12 @@ class SetGrade:
     
     def _set_grade(self):
         grade = self._grade_entry.get()
-        grades = [str(x) for x in range(1,11)]
+        grades = [str(x) for x in range(1,6)]
 
         if len(grade) == 0:
             self._show_error("Kenttä ei voi olla tyhjä.")
         elif grade not in grades:
-            self._show_error("Syötä kelvollinen arvosana (esim. 1-5 tai 4-10)")
+            self._show_error("Syötä kelvollinen arvosana (1-5)")
         else:
             try:
                 service.set_course_completed(self._course, grade)

@@ -1,7 +1,7 @@
 class Course:
     """Luokka, joka kuvaa yksittäistä kurssia.
     """
-    def __init__(self, name, credits, grade, user):
+    def __init__(self, name, credit, grade, user):
         """Luokan konstruktori, joka luo uuden kurssin.
 
         Args:
@@ -11,7 +11,7 @@ class Course:
         """
 
         self.name = name
-        self.credits = credits
+        self.credit = credit
         self.grade = grade
         self.user = user
         

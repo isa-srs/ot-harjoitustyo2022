@@ -8,7 +8,7 @@ class AddCourseView:
         self._handle_show_frontpage_view = handle_show_frontpage_view
         self._frame = None
         self._name_entry = None
-        self._credits_entry = None
+        self._credit_entry = None
         self._error_variable = None
         self._error_label = None
 
@@ -29,15 +29,15 @@ class AddCourseView:
 
     def _add_course(self):
         name = self._name_entry.get()
-        credits = self._credits_entry.get()
+        credit = self._credit_entry.get()
 
-        if len(name) == 0 or len(credits) == 0:
+        if len(name) == 0 or len(credit) == 0:
             self._show_error("Kentät eivät voi olla tyhjiä.")
-        elif int(credits) not in range(1,11):
+        elif int(credit) not in range(1,11):
             self._show_error("Opintopisteiden määrä tulee olla 1-10.")
         else:
             try:
-                service.add_course(name, credits)
+                service.add_course(name, credit)
                 self._handle_show_frontpage_view()
             except:
                 print("kurssin lisääminen epäonnistui")
@@ -49,13 +49,13 @@ class AddCourseView:
         name_label.grid(sticky=constants.W, padx=5, pady=5)
         self._name_entry.grid(row=1, column=1, sticky=constants.EW, padx=5, pady=5)
     
-    def _initialize_credits_field(self):
-        credits_label = ttk.Label(
+    def _initialize_credit_field(self):
+        credit_label = ttk.Label(
             master=self._frame, text="Opintopisteiden määrä:")
-        self._credits_entry = ttk.Entry(master=self._frame)
+        self._credit_entry = ttk.Entry(master=self._frame)
 
-        credits_label.grid(sticky=constants.W, padx=5, pady=5)
-        self._credits_entry.grid(row=2, column=1, sticky=constants.EW, padx=5, pady=5)
+        credit_label.grid(sticky=constants.W, padx=5, pady=5)
+        self._credit_entry.grid(row=2, column=1, sticky=constants.EW, padx=5, pady=5)
 
     def _initialize_style(self):
         frame_style = ttk.Style()
@@ -95,7 +95,7 @@ class AddCourseView:
         heading_label.grid(row=0, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
         
         self._initialize_course_name_field()
-        self._initialize_credits_field()
+        self._initialize_credit_field()
 
         self._error_label.grid(padx=5, pady=5)
 
