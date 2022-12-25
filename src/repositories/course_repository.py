@@ -11,7 +11,7 @@ def get_course_by_row(row):
     Returns:
         Course: Haettu kurssi Course-oliona.
     """
-    return Course(row["name"], row["credits"], row["completed"], row["user"]) if row else None
+    return Course(row["name"], row["credits"], row["grade"], row["user"]) if row else None
 
 
 class CourseRepository:
@@ -39,23 +39,23 @@ class CourseRepository:
 
         cursor = self._connection.cursor()
         cursor.execute(
-            'insert into courses (name, credits, completed, user) values (?,?,?,?)',
-            (course.name, course.credits, course.completed, course.user)
+            'insert into courses (name, credits, grade, user) values (?,?,?,?)',
+            (course.name, course.credits, course.grade, course.user)
         )
         self._connection.commit()
         return course
 
-    def set_course_completed(self, course):
+    def set_course_completed(self, course, grade):
         cursor = self._connection.cursor()
         cursor.execute(
-            'update courses set completed = "1" where name=?', (course,)
+            'update courses set grade = ? where name=?', (grade, course,)
         )
         self._connection.commit()
     
     def check_if_course_completed(self, course):
         cursor = self._connection.cursor()
         cursor.execute(
-            'select completed from courses where name=?', (course,)
+            'select grade from courses where name=?', (course,)
         )
         course = cursor.fetchone()
         if course == 1:
@@ -82,7 +82,7 @@ class CourseRepository:
     def find_not_completed_courses_by_user(self, user):
         cursor = self._connection.cursor()
         cursor.execute(
-            'select * from courses where user=? and completed=0', (user,)
+            'select * from courses where user=? and grade=0', (user,)
         )
         courses = cursor.fetchall()
         return list(map(get_course_by_row, courses))
@@ -90,7 +90,7 @@ class CourseRepository:
     def find_completed_courses_by_user(self, user):
         cursor = self._connection.cursor()
         cursor.execute(
-            'select * from courses where user=? and completed=1', (user,)
+            'select * from courses where user=? and grade>0', (user,)
         )
         courses = cursor.fetchall()
         return list(map(get_course_by_row, courses))

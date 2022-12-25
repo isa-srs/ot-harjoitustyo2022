@@ -53,7 +53,7 @@ class CourseListView:
 
         grade_label = ttk.Label(
             master=item_frame,
-            text="Arvosana: TODO"
+            text=f"Arvosana: {course.grade}"
         )
 
         delete_button = ttk.Button(
@@ -75,18 +75,18 @@ class CourseListView:
         self._frame = ttk.Frame(master=self._root)
 
         for course in self._courses:
-            if course.completed == "0":
+            if course.grade == "0":
                 self._initialize_course_item(course)
                 
         for course in self._courses:
-            if course.completed == "1":
+            if course.grade != "0":
                 self._initialize_course_item2(course)
 
 
 class FrontPageView:
     def __init__(self, root, handle_go_to_login, handle_add_course):
         self._root = root
-        self._handle_to_go_login = handle_go_to_login
+        self._handle_go_to_login = handle_go_to_login
         self._handle_add_course = handle_add_course
         self._frame = None
         self._user = service.get_current_user()
@@ -107,7 +107,7 @@ class FrontPageView:
 
     def _logout(self):
         service.logout()
-        self._handle_to_go_login()
+        self._handle_go_to_login()
     
     def _handle_course_completed(self, course):
         service.set_course_completed(course)

@@ -163,7 +163,7 @@ class AppService:
         return self._course_repository.find_completed_courses_by_user(self._user.username)
 
     def set_course_completed(self, course):
-        self._course_repository.set_course_completed(course.name)
+        self._course_repository.set_course_completed(course.name, "5")
 
     def check_if_course_completed(self, course):
         return self._course_repository.check_if_course_completed(course.name)
